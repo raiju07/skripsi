@@ -1,9 +1,8 @@
-# LARAVEL 8 Currency with Passport Oauth2
+# LARAVEL 6 Skripsi Karyawan Manajemen
 
 ---
 
 [Laravel PHP Framework 6.18.35](http://laravel.com).
-
 
 
 ## Prerequisites
@@ -15,41 +14,45 @@
 
 ## Getting Started
 
-1. Clone to your base project directory.
+1. Clone repo dengan perintah dibawah ini, di folder yg anda inginkan :
     
 	```
 	git clone https://github.com/raiju07/skripsi.git
 	```
-	
+
+1. Masuk ke dalam folder tersebut : 
+   ```
+   cd skripsi
+   ```
 2. Install composer dependencies.
 
 	```
 	composer install
 	```
 	
-3. Create configuration file `.env` (copy from `.env.example`) and setup the database from Mysql
+3. Buat file konfigurasi `.env` (copy dari `.env.example`) dan setup database sesuai dengan nama database dalam Mysql
 
 	```
 	##MySQL
 	DB_CONNECTION=mysql
 	DB_HOST=localhost
 	DB_PORT=3306
-	DB_DATABASE=database
+	DB_DATABASE=nama_database
 	DB_USERNAME=root
 	DB_PASSWORD=
 	```
     
-1. Migrate the database.
+1. Database Migrasi.
 
 	```
 	php artisan migrate
 	```
-1. Seed the user database.
+2. Seed user database.
 
 	```
 	php artisan db:seed
 	```
-1. Run the server
+1. Jalankan server demgan port standar
 
 	```
 	php artisan serve
