@@ -11,15 +11,15 @@
                 <b class="logo-icon p-l-10">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{ asset('template') }}/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-                   
+                    <!-- <img src="{{ asset('template') }}/assets/images/logo-icon.png" alt="homepage" class="light-logo" /> -->
+                   E-Recruitment
                 </b>
                 <!--End Logo icon -->
                  <!-- Logo text -->
                 <span class="logo-text">
                      <!-- dark Logo text -->
-                     <img src="{{ asset('template') }}/assets/images/logo-text.png" alt="homepage" class="light-logo" />
-                    
+                     <!-- <img src="{{ asset('template') }}/assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+                    <!-- E-Recruitment -->
                 </span>
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->

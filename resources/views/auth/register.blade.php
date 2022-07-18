@@ -3,10 +3,12 @@
 @section('content')
 
 <div>
-    <div class="text-center p-t-20 p-b-20">
-        <a href="/">
+    <div class="text-center p-t-20 p-b-20 text-white">
+        <!-- <a href="/">
             <span class="db"><img src="{{ asset('template/assets/images/logo.png') }}" alt="logo" /></span>
-        </a>
+        </a> -->
+        <h4>E-RECRUITMENT</h4>
+        <h4>HALAMAN REGISTRASI</h4>
     </div>
     <!-- Form -->
     <form class="form-horizontal m-t-20" method="POST" action="{{ route('register') }}">
@@ -63,7 +65,17 @@
             </div>
         </div>
         <div class="row border-top border-secondary">
-            <div class="col-12">
+            <div class="col-6">
+                <div class="form-group">
+                    <div class="p-t-20">
+                        <a class="btn btn-block btn-lg btn-warning" href="/">
+                            <i class="fa fa-chevron-left m-r-5"></i> {{ __('Kembali') }}
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-6">
                 <div class="form-group">
                     <div class="p-t-20">
                         <button class="btn btn-block btn-lg btn-info" type="submit">Daftar</button>

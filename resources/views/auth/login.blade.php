@@ -4,9 +4,10 @@
 
 <div id="loginform">
     <div class="text-center p-t-20 p-b-20 text-white">
-        <a href="/">
+        <!-- <a class="btn btn-link" href="/">
             <span class="db"><img src="{{ asset('template/assets/images/logo.png') }} " alt="logo" /></span>
-        </a>
+        </a> -->
+        <h4>E-RECRUITMENT</h4>
         <h4>HALAMAN LOGIN</h4>
     </div>
     <!-- Form -->
