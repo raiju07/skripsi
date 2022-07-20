@@ -39,6 +39,11 @@
                     </div>
                 </div>
             @endforeach
+            <div class="card shadow rounded">
+                <div class="card-body p-3">
+                    <p>Anda Telah Melamar pekerjaan tersebut, Silahkan melanjutkan ke halaman <a class="btn btn-info" href="/ujian">Ujian</a></p>
+                </div>
+            </div>
         @else
             <div class="card shadow rounded">
                 <div class="card-header text-center bg-dark text-white">
