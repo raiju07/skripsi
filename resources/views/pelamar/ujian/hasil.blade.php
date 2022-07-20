@@ -32,17 +32,23 @@
         <table class="table table-bordered" >
             <thead>
                 <tr class="table-primary text-center">
+                    <th>No</th>
+                    <th>Lowongan</th>
                     <th>Hasil Tes</th>
                     <th>Hasil Wawancara</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($lamarans as $lamaran )
                 <tr>
+                    <td align="center">{{ $loop->iteration}}</td>
+                    <td>{{ $lamaran->lowongan['jabatan'] ?? '-' }} {{ $lamaran->lowongan['departemen'] ?? '-' }} </td>
                     <td>{{ $lamaran->nilai_ujian ?? '-' }}</td>
                     <td>{{ $lamaran->nilai_wawancara ?? '-' }}</td>
                     <td>{{ $lamaran->status ?? '-' }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

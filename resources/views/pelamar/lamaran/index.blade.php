@@ -35,15 +35,44 @@
                     </div>
                     <div class="card-body p-3">
                         <span class="m-b-15 d-block deskripsi">{!! $lamaran->lowongan['deskripsi'] !!}</span>
-
+                        @if($lamaran->status != '' && $lamaran->status != 'daftar' )
+                            <div class="col-md-12 align-center p-0">
+                                <table class="table table-bordered" >
+                                    <thead>
+                                        <tr class="table-primary text-center">
+                                            <th>Hasil Tes</th>
+                                            <th>Hasil Wawancara</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $lamaran->nilai_ujian ?? '-' }}</td>
+                                            <td>{{ $lamaran->nilai_wawancara ?? '-' }}</td>
+                                            <td>{{ $lamaran->status ?? '-' }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <div class="card shadow rounded">
+                                <div class="card-body p-3">
+                                    <p>Anda Telah Melamar pekerjaan tersebut, Silahkan melanjutkan ke halaman <a class="btn btn-info" href="/ujian">Ujian</a></p>
+                                </div>
+                            </div>
+                        @endif
+                         
                     </div>
                 </div>
             @endforeach
-            <div class="card shadow rounded">
-                <div class="card-body p-3">
-                    <p>Anda Telah Melamar pekerjaan tersebut, Silahkan melanjutkan ke halaman <a class="btn btn-info" href="/ujian">Ujian</a></p>
+
+            @if( $can )
+                <div class="card shadow rounded">
+                    <div class="card-body p-3">
+                        <a class="btn btn-info" href="/">Melamar lagi </a></p>
+                    </div>
                 </div>
-            </div>
+            @endif 
         @else
             <div class="card shadow rounded">
                 <div class="card-header text-center bg-dark text-white">

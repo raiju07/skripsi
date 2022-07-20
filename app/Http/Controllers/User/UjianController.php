@@ -17,7 +17,13 @@ class UjianController extends Controller
     		return redirect()->back()->with(['status'=>'Silahkan melamar posisi yang diinginkan terlebih dahulu!']);
     	}
 
-    	if(auth()->user()->jawabans()->exists()){
+    	//if(auth()->user()->jawabans()->exists()){
+        $active_ngelamar = Lamaran::where([
+            'pelamar_id' =>  auth()->guard('web')->user()->id 
+        ])
+        ->whereIn('status', ['daftar'])
+        ->count() > 0 ? true : false;
+    	if( !$active_ngelamar  ){
     		return redirect('hasil')->with(['status'=>'Anda sudah mengikuti ujian sebelumnya!']);
     	}
 
@@ -44,7 +50,7 @@ class UjianController extends Controller
         $jawaban = $request->jawaban;
         $data = [];
         $pelamar_id = auth()->guard('web')->id();
-        $lamaran = Lamaran::where('pelamar_id', $pelamar_id)->first();
+        $lamaran = Lamaran::where('pelamar_id', $pelamar_id)->whereIn('status', ['daftar'])->first();
         $rata = 100 / sizeof($jawaban_soal);
         $nilai = 0;
 

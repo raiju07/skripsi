@@ -15,8 +15,20 @@ class LamaranController extends Controller
         $lamaran = Lamaran::with([
             'lowongan'
         ])->where('pelamar_id', auth()->guard('web')->user()->id )->get();
+        
+        $active_ngelamar = Lamaran::where([
+            'pelamar_id' =>  auth()->guard('web')->user()->id 
+        ])
+        ->whereIn('status', ['daftar','proses'])
+        ->count() > 0;
+        
+        $can = Lamaran::where([
+            'pelamar_id' =>  auth()->guard('web')->user()->id 
+        ])
+        ->whereIn('status', [ 'lulus','daftar','proses'])
+        ->count() > 0 ? false : true;
 
-        return view('pelamar.lamaran.index', compact('lamaran') );
+        return view('pelamar.lamaran.index', compact('lamaran','active_ngelamar', 'can') );
     }
 
     public function create()
@@ -34,8 +46,15 @@ class LamaranController extends Controller
                 'lowongan_id:required' => 'Lowongan tidak boleh kosong',
             ]
         );
+        
+        //if(Lamaran::where('pelamar_id', auth()->guard('web')->user()->id )->exists() && !$gagal){
+        $active_ngelamar = Lamaran::where([
+            'pelamar_id' =>  auth()->guard('web')->user()->id 
+        ])
+        ->whereIn('status', ['daftar'])
+        ->count() > 0 ? true : false;
 
-        if(Lamaran::where('pelamar_id', auth()->guard('web')->user()->id )->exists()){
+        if( $active_ngelamar && Lamaran::where('pelamar_id', auth()->guard('web')->user()->id )->exists()){
             return redirect()->back()->withErrors(['Anda sudah melamar sebelumnya!']);
         }
 

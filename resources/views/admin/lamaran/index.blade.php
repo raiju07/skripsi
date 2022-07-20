@@ -55,12 +55,13 @@
                                         <td>{!! $v->status !!}</td>
 
                                         <td align="center">
+                                            @if($v->status != 'gagal' && $v->status != 'lulus')
                                             <div class="d-flex">
                                                 <a href="{{url('admin/lamaran/'.$v->id.'/edit')}}" class="btn btn-warning btn-sm">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                             </div>
-
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

@@ -10,7 +10,7 @@ use App\Lamaran;
 class HasilController extends Controller
 {
     public function index(){
-    	$lamaran = Lamaran::where('pelamar_id',auth()->guard('web')->id())->first();
-    	return view('pelamar.ujian.hasil', compact('lamaran'));
+    	$lamarans = Lamaran::where('pelamar_id',auth()->guard('web')->id())->get();
+    	return view('pelamar.ujian.hasil', compact('lamarans'));
     }
 }
