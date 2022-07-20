@@ -30,6 +30,7 @@
                             <thead>
                                 <tr class="text-center">
                                     <th width="10">No</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
                                     <th>Departemen</th>
                                     <th>Jabatan</th>
@@ -44,9 +45,10 @@
                                 @foreach($data as $i => $v)
                                     <tr>
                                         <td align="center">{{$loop->iteration}}</td>
-                                        <td>{!! $v->pelamar['email'] !!}</td>
-                                        <td>{!! $v->lowongan['departemen'] !!}</td>
-                                        <td>{!! $v->lowongan['jabatan'] !!}</td>
+                                        <td>{!! $v->pelamar['nama'] ?? '' !!}</td>
+                                        <td>{!! $v->pelamar['email'] ?? '' !!}</td>
+                                        <td>{!! $v->lowongan['departemen'] ?? '' !!}</td>
+                                        <td>{!! $v->lowongan['jabatan'] ?? '' !!}</td>
                                         <td align="right">{!! $v->lowongan['gaji'] !!}</td>
                                         <td align="center">{{ $v->nilai_ujian }}</td>
                                         <td align="center">{!! $v->nilai_wawancara !!}</td>
