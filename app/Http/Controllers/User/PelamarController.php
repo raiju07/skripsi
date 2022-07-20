@@ -26,8 +26,10 @@ class PelamarController extends Controller
         $validator = $request->validate(
             [
                 'nama' => 'required',
-                'email' => 'required|unique:admin,email,'.auth()->user()->id,
+                'email' => 'required|unique:pelamar,email,'.auth()->user()->id.'|email', 
                 'password' => 'confirmed',
+                'foto' => 'image|mimes:jpeg,png,jpg',
+                'cv' => 'mimes:pdf,doc,docx,jpeg,png,jpg|max:10000',
             ],
             [
 
@@ -45,6 +47,13 @@ class PelamarController extends Controller
             $fileName = $user->id.'_'.$user->nama.'.'.$ext; 
             $file->move( public_path('images'), $fileName);
             $data['foto'] = $fileName;
+        }
+        if($request->hasFile('cv')){
+            $file = $request->file('cv');
+            $ext  = $file->getClientOriginalExtension();
+            $fileName = 'CV '.$user->email.'.'.$ext; 
+            $file->move( public_path('cv'), $fileName);
+            $data['cv'] = $fileName;
         }
         $user->update($data);
         return redirect('profil' )->with(['status'=>'Profil berhasil diupdate!']);

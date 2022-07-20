@@ -75,6 +75,9 @@
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>
+                                                @if( !is_null($v->cv) && $v->cv != '')
+                                                    <a class="btn btn-sm btn-info" href="{{ asset('cv/'.$v->cv) }}" download="{{$v->cv}}">Download CV</a>
+                                                @endif
                                             </div>
 
                                         </td>

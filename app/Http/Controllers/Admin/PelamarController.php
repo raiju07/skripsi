@@ -84,7 +84,7 @@ class PelamarController extends Controller
                 'nama' => 'required',
                 'tempat_lahir' => 'required',
                 'tgl_lahir' => 'date',
-                'email' => 'required|unique:pelamar|email',
+                'email' => 'required|unique:pelamar,email,'.$user->id.'|email', 
                 'password' => 'confirmed',
             ],
             [
@@ -105,11 +105,11 @@ class PelamarController extends Controller
             $request->file('foto')->move("images", $fileName);
             $data['foto'] = $fileName;
         }
-        if($request->file('cv')){
+        if($request->hasFile('cv')){
             $file = $request->file('cv');
             $ext  = $file->getClientOriginalExtension();
-            $fileName = $user->nama.'.'.$ext; 
-            $request->file('cv')->move("images", $fileName);
+            $fileName = 'CV '.$user->email.'.'.$ext; 
+            $file->move( public_path('cv'), $fileName);
             $data['cv'] = $fileName;
         }
 

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page_title' => 'Master Soal'  ])
+@extends('layouts.app', ['page_title' => 'Profil Pelamar'  ])
 
 
 
@@ -33,7 +33,7 @@
       	@csrf
       	@method('patch')
       	<div class="form-row">
-      		<div class="form-group col text-center">
+      		<div class="form-group col-md-12 text-center">
       		    <div class="" style="height:200px">
       		        <img id="foto-preview" src="{{ $user->foto == '' ? '/images/noimage.png' : '/images/'.$user->foto }}" class="img-thumbnail" alt="..." style="height:200px">
       		    </div>
@@ -53,6 +53,30 @@
       		</div>
 
       	</div>
+      	<div class="form-row">
+			<div class="form-group col-md-12">
+				<label>Update CV <span class="badge badge-secondary">jpg, jpeg, png, word, pdf</span></label>
+				<!-- <div class="" style="height:200px">
+					<img id="cv-preview" src="{{ asset('images') }}/{{ $user->cv == '' ? 'noimage.png' : $user->cv }}" class="img-thumbnail" alt="..." style="height:200px">
+				</div> -->
+				<input type="file" name="cv" id="cv" class="form-control form-control-sm @error('cv') is-invalid @enderror" >
+					@error('cv')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+			</div>
+
+		</div>
+		@if( !is_null($user->cv) && $user->cv != '')
+		<div class="form-row bg-light pt-2">
+			<div class="form-group col-md-12">
+				<label>CV Anda</label>
+				<br>
+				{{$user->cv}}
+			</div>
+		</div>
+		@endif
       	<div class="form-row">
       		<div class="form-group col-md-6 col-sm-12">
       			<label>Nama</label>

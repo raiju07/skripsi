@@ -11,7 +11,7 @@
         	<form method="POST" action="{{ url('admin/pelamar/'.$user->id ) }}" enctype="multipart/form-data" autocomplete="off">
         	  	@csrf
         	  	@method('patch')
-        	  	<div class="form-row">
+        	  	<!-- <div class="form-row">
         	  		<div class="form-group col-md-6 text-center">
         	  			<label>Foto</label>
         	  		    <div class="" style="height:200px">
@@ -51,7 +51,52 @@
         			        @enderror
         	  		</div>
 
-        	  	</div>
+        	  	</div> -->
+				<div class="form-row">
+					<div class="form-group col-md-6 col-sm-12 text-center">
+						<div class="" style="height:200px">
+							<img id="foto-preview" src="{{ $user->foto == '' ? '/images/noimage.png' : '/images/'.$user->foto }}" class="img-thumbnail" alt="..." style="height:200px">
+						</div>
+						<input type="file" name="foto" id="foto" class="form-control form-control-sm @error('foto') is-invalid @enderror" onchange="function showPict(e){
+								var file = e.target.files[0];
+								var fileReader = new FileReader();
+								fileReader.onload = function(e) { 
+									$('#foto-preview').attr('src',fileReader.result )
+								};
+								fileReader.readAsDataURL(file);
+							} showPict(event)">
+							@error('foto')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+					</div>
+
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6 col-sm-12">
+						<label>Update CV <span class="badge badge-secondary">jpg, jpeg, png, word, pdf</span></label>
+						<!-- <div class="" style="height:200px">
+							<img id="cv-preview" src="{{ asset('images') }}/{{ $user->cv == '' ? 'noimage.png' : $user->cv }}" class="img-thumbnail" alt="..." style="height:200px">
+						</div> -->
+						<input type="file" name="cv" id="cv" class="form-control form-control-sm @error('cv') is-invalid @enderror" >
+							@error('cv')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							@enderror
+					</div>
+
+				</div>
+				@if( !is_null($user->cv) && $user->cv != '')
+				<div class="form-row bg-light pt-2">
+					<div class="form-group col-md-6 col-sm-12">
+						<label>Download CV</label>
+						<br>
+						<a class="btn btn-sm btn-info" href="{{ asset('cv/'.$user->cv) }}" download="{{$user->cv}}">{{ $user->cv }}</a>
+					</div>
+				</div>
+				@endif
         	  	<div class="form-row">
         	  		<div class="form-group col-md-6 col-sm-12">
         	  			<label>Nama</label>
