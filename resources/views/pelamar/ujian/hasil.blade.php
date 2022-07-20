@@ -39,9 +39,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $lamaran->nilai_ujian }}</td>
-                    <td>{{ $lamaran->nilai_wawancara }}</td>
-                    <td>{{ $lamaran->status }}</td>
+                    <td>{{ $lamaran->nilai_ujian ?? '-' }}</td>
+                    <td>{{ $lamaran->nilai_wawancara ?? '-' }}</td>
+                    <td>{{ $lamaran->status ?? '-' }}</td>
                 </tr>
             </tbody>
         </table>
